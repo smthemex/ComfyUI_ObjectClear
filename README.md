@@ -7,6 +7,7 @@ Complete Object Removal via Object-Effect Attention,you can try it in ComfyUI
 
 
 # Example
+![](https://github.com/smthemex/ComfyUI_ObjectClear/blob/main/example_mult.png)
 ![](https://github.com/smthemex/ComfyUI_ObjectClear/blob/main/example.png)
 
 
