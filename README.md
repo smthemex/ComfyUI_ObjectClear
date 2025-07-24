@@ -7,9 +7,9 @@
 
 # 1 . Installation /安装
 
-In the ./ComfyUI /custom_node directory, run the following:   
+In the ./ComfyUI /custom_node/ directory, run the following:   
 ```
-git clone https://github.com/smthemex/ ComfyUI_ObjectClear.git
+git clone https://github.com/smthemex/ComfyUI_ObjectClear.git
 ```
 ---
 
@@ -46,7 +46,7 @@ pip install -r requirements.txt
 * 支持单图或多图，遮罩合并用插件带的batch节点，512是垫图最小短边尺寸（会自动裁切），模型用512*512训练的，按理此尺寸是最好的。
 * Support single or multiple images, use batch nodes with plugins for mask merging, 512 is the input image ‘s minimum short edge size, and the model is trained with 512 * 512, which is theoretically the best size.
 
-#  Citation
+# 6. Citation
 ```
 @InProceedings{zhao2025ObjectClear,
     title     = {{ObjectClear}: Complete Object Removal via Object-Effect Attention},
