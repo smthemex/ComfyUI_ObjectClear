@@ -1,0 +1,832 @@
+{
+  "id": "d49a2aaa-7f48-41e7-b5e8-24619dec06fd",
+  "revision": 0,
+  "last_node_id": 30,
+  "last_link_id": 46,
+  "nodes": [
+    {
+      "id": 9,
+      "type": "CLIPTextEncode",
+      "pos": [
+        20464.234375,
+        -950.14892578125
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 8,
+      "type": "CLIPTextEncode",
+      "pos": [
+        20460.73046875,
+        -991.8788452148438
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            24
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "remove the instance of object"
+      ]
+    },
+    {
+      "id": 14,
+      "type": "ObjectClearLoader",
+      "pos": [
+        20623.1328125,
+        -1182.1590576171875
+      ],
+      "size": [
+        270,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL_ObjectClear",
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ObjectClearLoader"
+      },
+      "widgets_values": [
+        "diffusion_pytorch_model.fp16.safetensors",
+        "diffusion_pytorch_model.safetensors",
+        "postfuse_module.safetensors",
+        true
+      ]
+    },
+    {
+      "id": 15,
+      "type": "DualCLIPLoader",
+      "pos": [
+        20056.70703125,
+        -1170.5067138671875
+      ],
+      "size": [
+        270,
+        130
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            18,
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "clip_g.safetensors",
+        "clip_l.safetensors",
+        "sdxl",
+        "default"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        20055.10546875,
+        -984.60302734375
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "links": [
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPVisionLoader"
+      },
+      "widgets_values": [
+        "clip-vit-large-patch14.safetensors"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "ObjectClearSampler",
+      "pos": [
+        20882.8359375,
+        -956.9453125
+      ],
+      "size": [
+        270,
+        278
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL_ObjectClear",
+          "link": 21
+        },
+        {
+          "name": "iamge",
+          "type": "IMAGE",
+          "link": 41
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 46
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 24
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 25
+        },
+        {
+          "name": "vison_emb",
+          "type": "CLIP_VISION_OUTPUT",
+          "link": 34
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            26
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ObjectClearSampler"
+      },
+      "widgets_values": [
+        1063207822,
+        "randomize",
+        20,
+        2.5,
+        0.99,
+        512
+      ]
+    },
+    {
+      "id": 28,
+      "type": "ImageBatch",
+      "pos": [
+        20383.22265625,
+        -852.30224609375
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 39
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 40
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            41,
+            42
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageBatch"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 25,
+      "type": "ImageToMask",
+      "pos": [
+        20122.365234375,
+        -383.7356262207031
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 38
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            43
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageToMask"
+      },
+      "widgets_values": [
+        "red"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "ImageToMask",
+      "pos": [
+        20095.9609375,
+        -191.02154541015625
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            44
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageToMask"
+      },
+      "widgets_values": [
+        "red"
+      ]
+    },
+    {
+      "id": 30,
+      "type": "ObjectClearBatch",
+      "pos": [
+        20397.666015625,
+        -665.2557373046875
+      ],
+      "size": [
+        149.61679077148438,
+        46
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask1",
+          "type": "MASK",
+          "link": 43
+        },
+        {
+          "name": "mask2",
+          "type": "MASK",
+          "link": 44
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            45,
+            46
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ObjectClearBatch"
+      }
+    },
+    {
+      "id": 24,
+      "type": "ObjectClearVision",
+      "pos": [
+        20683.552734375,
+        -532.195068359375
+      ],
+      "size": [
+        151.69491577148438,
+        46
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "iamge",
+          "type": "IMAGE",
+          "link": 42
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 45
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ObjectClearVision"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 18,
+      "type": "CLIPVisionEncode",
+      "pos": [
+        20937.95703125,
+        -610.2886352539062
+      ],
+      "size": [
+        270,
+        78
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "link": 27
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 35
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP_VISION_OUTPUT",
+          "type": "CLIP_VISION_OUTPUT",
+          "links": [
+            34
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPVisionEncode"
+      },
+      "widgets_values": [
+        "none"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "SaveImage",
+      "pos": [
+        20545.396484375,
+        -420.887451171875
+      ],
+      "size": [
+        796.6367797851562,
+        440.71405029296875
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 26
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        19725.62109375,
+        -88.6943130493164
+      ],
+      "size": [
+        270,
+        314
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "test-sample5.png",
+        "image"
+      ]
+    },
+    {
+      "id": 26,
+      "type": "LoadImage",
+      "pos": [
+        19704.015625,
+        -475.34197998046875
+      ],
+      "size": [
+        270,
+        314
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            38
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "test-sample4.png",
+        "image"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        19944.125,
+        -842.93603515625
+      ],
+      "size": [
+        369.85162353515625,
+        326.88409423828125
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            40
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "test-sample5.jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "LoadImage",
+      "pos": [
+        19555.708984375,
+        -877.9942016601562
+      ],
+      "size": [
+        350.5255126953125,
+        326
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            39
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "test-sample4.jpg",
+        "image"
+      ]
+    }
+  ],
+  "links": [
+    [
+      3,
+      4,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      18,
+      15,
+      0,
+      8,
+      0,
+      "CLIP"
+    ],
+    [
+      19,
+      15,
+      0,
+      9,
+      0,
+      "CLIP"
+    ],
+    [
+      21,
+      14,
+      0,
+      16,
+      0,
+      "MODEL_ObjectClear"
+    ],
+    [
+      24,
+      8,
+      0,
+      16,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      25,
+      9,
+      0,
+      16,
+      4,
+      "CONDITIONING"
+    ],
+    [
+      26,
+      16,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      27,
+      17,
+      0,
+      18,
+      0,
+      "CLIP_VISION"
+    ],
+    [
+      34,
+      18,
+      0,
+      16,
+      5,
+      "CLIP_VISION_OUTPUT"
+    ],
+    [
+      35,
+      24,
+      0,
+      18,
+      1,
+      "IMAGE"
+    ],
+    [
+      38,
+      26,
+      0,
+      25,
+      0,
+      "IMAGE"
+    ],
+    [
+      39,
+      27,
+      0,
+      28,
+      0,
+      "IMAGE"
+    ],
+    [
+      40,
+      3,
+      0,
+      28,
+      1,
+      "IMAGE"
+    ],
+    [
+      41,
+      28,
+      0,
+      16,
+      1,
+      "IMAGE"
+    ],
+    [
+      42,
+      28,
+      0,
+      24,
+      0,
+      "IMAGE"
+    ],
+    [
+      43,
+      25,
+      0,
+      30,
+      0,
+      "MASK"
+    ],
+    [
+      44,
+      5,
+      0,
+      30,
+      1,
+      "MASK"
+    ],
+    [
+      45,
+      30,
+      0,
+      24,
+      1,
+      "MASK"
+    ],
+    [
+      46,
+      30,
+      0,
+      16,
+      2,
+      "MASK"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6209213230591554,
+      "offset": [
+        -19288.882829214504,
+        1249.3984719373475
+      ]
+    },
+    "frontendVersion": "1.23.4"
+  },
+  "version": 0.4
+}

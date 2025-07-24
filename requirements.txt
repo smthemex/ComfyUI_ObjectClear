@@ -1,0 +1,9 @@
+accelerate
+torch
+torchvision
+numpy
+opencv-python
+pillow
+transformers
+scipy
+diffusers
