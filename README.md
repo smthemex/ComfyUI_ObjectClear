@@ -38,8 +38,8 @@ pip install -r requirements.txt
 * seg /遮罩没有内置，随便用其他的吧。
 
 # 4 . Example
-![](https://github.com/smthemex/ComfyUI_ObjectClear/blob/main/example_mult.png)
-![](https://github.com/smthemex/ComfyUI_ObjectClear/blob/main/example.png)
+![](https://github.com/smthemex/ComfyUI_ObjectClear/blob/main/example_workflows/example_mult.png)
+![](https://github.com/smthemex/ComfyUI_ObjectClear/blob/main/example_workflows/example.png)
 
 
 # 5 .Tips/使用说明
