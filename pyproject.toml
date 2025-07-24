@@ -1,0 +1,16 @@
+[project]
+name = "objectclear"
+description = "ObjectClear:Complete Object Removal via Object-Effect Attention,you can try it in ComfyUI"
+version = "1.0.0"
+license = {file = "LICENSE"}
+dependencies = ["accelerate", "torch", "torchvision", "numpy", "opencv-python", "pillow", "transformers", "scipy", "diffusers"]
+
+[project.urls]
+Repository = "https://github.com/smthemex/ComfyUI_ObjectClear"
+#  Used by Comfy Registry https://registry.comfy.org
+
+[tool.comfy]
+PublisherId = "smthemex"
+DisplayName = "ComfyUI_ObjectClear"
+Icon = ""
+includes = []

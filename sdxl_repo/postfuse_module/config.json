@@ -1,0 +1,5 @@
+{
+    "_class_name": "PostfuseModule",
+    "embed_dim": 2048,
+    "embed_dim_img": 768
+}
