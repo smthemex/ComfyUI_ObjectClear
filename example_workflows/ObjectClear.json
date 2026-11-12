@@ -1,0 +1,762 @@
+{
+  "id": "5207b291-b01c-4966-a004-51b0cbd8d6aa",
+  "revision": 0,
+  "last_node_id": 28,
+  "last_link_id": 32,
+  "nodes": [
+    {
+      "id": 3,
+      "type": "ObjectClearSampler",
+      "pos": [
+        22572.239225491456,
+        -85.82560194923627
+      ],
+      "size": [
+        270,
+        326
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 31
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 4
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 2
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 3
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 14
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            16
+          ]
+        },
+        {
+          "name": "attn_map",
+          "type": "MASK",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ObjectClearSampler"
+      },
+      "widgets_values": [
+        145777313806828,
+        "randomize",
+        20,
+        2.5,
+        "euler",
+        "simple",
+        1,
+        512
+      ],
+      "widgets_values_named": {
+        "seed": 145777313806828,
+        "control_after_generate": "randomize",
+        "steps": 20,
+        "cfg": 2.5,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "strength": 1,
+        "short_size": 512
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 4,
+      "type": "ObjectClearPostfuseLoader",
+      "pos": [
+        21755.098276784975,
+        -237.33545591897405
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "postfuse",
+          "type": "OBJECTCLEAR",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ObjectClearPostfuseLoader"
+      },
+      "widgets_values": [
+        "postfuse_module.safetensors"
+      ],
+      "widgets_values_named": {
+        "postfuse": "postfuse_module.safetensors"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 5,
+      "type": "ObjectClearConditioning",
+      "pos": [
+        22166.116596318272,
+        -43.79074922759834
+      ],
+      "size": [
+        178.2935546875,
+        126
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "postfuse",
+          "type": "OBJECTCLEAR",
+          "link": 1
+        },
+        {
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "link": 19
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 10
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 12
+        },
+        {
+          "name": "positive",
+          "shape": 7,
+          "type": "CONDITIONING",
+          "link": null
+        },
+        {
+          "name": "negative",
+          "shape": 7,
+          "type": "CONDITIONING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ObjectClearConditioning"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 6,
+      "type": "VAELoader",
+      "pos": [
+        22150.40687799457,
+        -195.92290763172662
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            4,
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "sdxl.vae.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "sdxl.vae.safetensors"
+      }
+    },
+    {
+      "id": 10,
+      "type": "ObjectClearAGF",
+      "pos": [
+        22976.88926552496,
+        -52.94777333303608
+      ],
+      "size": [
+        192.2935546875,
+        66
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 8
+        },
+        {
+          "name": "decoded",
+          "type": "IMAGE",
+          "link": 17
+        },
+        {
+          "name": "attn_map",
+          "type": "MASK",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ObjectClearAGF"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 11,
+      "type": "PreviewImage",
+      "pos": [
+        22883.94375382739,
+        134.6359792300864
+      ],
+      "size": [
+        555.2041436589423,
+        506.81881912891345
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 12,
+      "type": "LoadImage",
+      "pos": [
+        21719.62494804168,
+        -126.27131718291872
+      ],
+      "size": [
+        270,
+        102
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            8,
+            10,
+            14
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "test-sample3.jpg",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "test-sample3.jpg",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 13,
+      "type": "LoadImage",
+      "pos": [
+        21729.92031012536,
+        320.17556669679703
+      ],
+      "size": [
+        270,
+        102
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            11
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "test-sample3.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "test-sample3.png",
+        "upload": "image"
+      }
+    },
+    {
+      "id": 14,
+      "type": "ImageToMask",
+      "pos": [
+        22140.827061673703,
+        208.35644181857907
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            12,
+            13
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageToMask"
+      },
+      "widgets_values": [
+        "red"
+      ],
+      "widgets_values_named": {
+        "channel": "red"
+      }
+    },
+    {
+      "id": 16,
+      "type": "VAEDecode",
+      "pos": [
+        22990.784443844987,
+        -212.45450104166252
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 16
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            17,
+            32
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 17,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        21751.47036738215,
+        -349.4193340494158
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPVisionLoader"
+      },
+      "widgets_values": [
+        "clip-vit-large-patch14.safetensors"
+      ],
+      "widgets_values_named": {
+        "clip_name": "clip-vit-large-patch14.safetensors"
+      }
+    },
+    {
+      "id": 27,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        22139.725633201993,
+        -352.548377466333
+      ],
+      "size": [
+        273.4576171875,
+        98
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            31
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": null
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "ObjectClear_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "ckpt_name": "ObjectClear_fp16.safetensors"
+      }
+    },
+    {
+      "id": 28,
+      "type": "PreviewImage",
+      "pos": [
+        23508.580772543646,
+        -77.5119748194108
+      ],
+      "size": [
+        474.3218849948018,
+        762.175374776174
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 32
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    }
+  ],
+  "links": [
+    [
+      1,
+      4,
+      0,
+      5,
+      0,
+      "OBJECTCLEAR"
+    ],
+    [
+      2,
+      5,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      3,
+      5,
+      1,
+      3,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      4,
+      6,
+      0,
+      3,
+      1,
+      "VAE"
+    ],
+    [
+      6,
+      3,
+      1,
+      10,
+      2,
+      "MASK"
+    ],
+    [
+      7,
+      10,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      8,
+      12,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      11,
+      13,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ],
+    [
+      13,
+      14,
+      0,
+      3,
+      5,
+      "MASK"
+    ],
+    [
+      14,
+      12,
+      0,
+      3,
+      4,
+      "IMAGE"
+    ],
+    [
+      16,
+      3,
+      0,
+      16,
+      0,
+      "LATENT"
+    ],
+    [
+      17,
+      16,
+      0,
+      10,
+      1,
+      "IMAGE"
+    ],
+    [
+      18,
+      6,
+      0,
+      16,
+      1,
+      "VAE"
+    ],
+    [
+      19,
+      17,
+      0,
+      5,
+      1,
+      "CLIP_VISION"
+    ],
+    [
+      31,
+      27,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      32,
+      16,
+      0,
+      28,
+      0,
+      "IMAGE"
+    ],
+    [
+      10,
+      12,
+      0,
+      5,
+      2,
+      "IMAGE"
+    ],
+    [
+      12,
+      14,
+      0,
+      5,
+      3,
+      "MASK"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Group",
+      "bounding": [
+        21346.009604423085,
+        -448.0094166355655,
+        2730.710240946515,
+        1313.749772619432
+      ],
+      "color": "#3f789e",
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.4869707102568872,
+      "offset": [
+        -20881.29245930303,
+        982.6260495007672
+      ]
+    },
+    "frontendVersion": "1.58.5"
+  },
+  "version": 0.4
+}
